@@ -1,7 +1,7 @@
 """For more information about the Binomial Distribution -
 https://en.wikipedia.org/wiki/Binomial_distribution"""
 
-from math import factorial
+from math import comb
 
 
 def binomial_distribution(successes: int, trials: int, prob: float) -> float:
@@ -9,8 +9,8 @@ def binomial_distribution(successes: int, trials: int, prob: float) -> float:
     Return probability of k successes out of n tries, with p probability for one
     success
 
-    The function uses the factorial function in order to calculate the binomial
-    coefficient
+    The function uses the exact binomial coefficient to calculate the
+    probability.
 
     >>> binomial_distribution(3, 5, 0.7)
     0.30870000000000003
@@ -26,9 +26,7 @@ def binomial_distribution(successes: int, trials: int, prob: float) -> float:
     if not 0 < prob < 1:
         raise ValueError("prob has to be in range of 1 - 0")
     probability = (prob**successes) * ((1 - prob) ** (trials - successes))
-    # Calculate the binomial coefficient: n! / k!(n-k)!
-    coefficient = float(factorial(trials))
-    coefficient /= factorial(successes) * factorial(trials - successes)
+    coefficient = comb(trials, successes)
     return probability * coefficient
 
 
