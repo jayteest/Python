@@ -16,6 +16,8 @@ def binomial_distribution(successes: int, trials: int, prob: float) -> float:
     0.30870000000000003
     >>> binomial_distribution (2, 4, 0.5)
     0.375
+    >>> binomial_distribution(85, 171, 0.5)
+    0.060749764626165485
     """
     if successes > trials:
         raise ValueError("""successes must be lower or equal to trials""")
